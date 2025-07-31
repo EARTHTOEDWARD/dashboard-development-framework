@@ -1,0 +1,77 @@
+version: 1.0.0
+framework: dashboard-method
+markdownExploder: true
+
+dashboard-requirements:
+  requirementsFile: docs/dashboard-requirements.md
+  requirementsVersion: v1
+  requirementsSharded: false
+  requirementsShardedLocation: docs/requirements
+
+dashboard-architecture:
+  architectureFile: docs/dashboard-architecture.md
+  architectureVersion: v1
+  architectureSharded: false
+  architectureShardedLocation: docs/architecture
+
+dashboard-design:
+  mockupsFile: docs/dashboard-mockups.md
+  designSystemFile: docs/design-system.md
+  componentLibraryLocation: docs/components
+
+dashboard-development:
+  componentSpecLocation: docs/components
+  componentImplementationLocation: src/components
+  testLocation: tests
+  documentationLocation: docs
+
+devLoadAlwaysFiles:
+  - docs/dashboard-architecture.md
+  - docs/coding-standards.md
+  - docs/component-guidelines.md
+  - docs/testing-standards.md
+
+devDebugLog: .ai/dashboard-debug-log.md
+dashboardComponentLocation: src/components
+dashboardPageLocation: src/pages
+dashboardServiceLocation: src/services
+
+quality-gates:
+  requirementsApproval: true
+  architectureReview: true
+  designValidation: true
+  componentTesting: true
+  integrationTesting: true
+  performanceValidation: true
+  accessibilityTesting: true
+  securityValidation: true
+  deploymentReadiness: true
+
+technology-preferences:
+  frontend:
+    primary: react
+    alternatives: [vue, streamlit, dash]
+    ui-library: material-ui
+    charts: recharts
+    state-management: zustand
+  
+  backend:
+    api: fastapi
+    alternatives: [express, flask, django]
+    database: postgresql
+    cache: redis
+    queue: celery
+  
+  deployment:
+    containerization: docker
+    orchestration: docker-compose
+    cloud: aws
+    monitoring: prometheus
+
+slashPrefix: Dashboard
+
+workflow-templates:
+  simple: simple-dashboard-workflow.yaml
+  standard: dashboard-development-workflow.yaml
+  complex: complex-dashboard-workflow.yaml
+  realtime: realtime-dashboard-workflow.yaml
