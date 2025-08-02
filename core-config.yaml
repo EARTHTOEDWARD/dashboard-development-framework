@@ -50,22 +50,32 @@ quality-gates:
 technology-preferences:
   frontend:
     primary: react
+    framework: refine
     alternatives: [vue, streamlit, dash]
-    ui-library: material-ui
+    ui-library: shadcn-ui
+    ui-alternatives: [material-ui, ant-design]
     charts: recharts
     state-management: zustand
+    styling: tailwindcss
   
   backend:
-    api: fastapi
-    alternatives: [express, flask, django]
+    primary: supabase
+    api: supabase-rest
+    alternatives: [fastapi, express, flask, django]
     database: postgresql
     cache: redis
     queue: celery
+    realtime: supabase-realtime
+    auth: supabase-auth
+    storage: supabase-storage
   
   deployment:
+    primary: vercel
+    alternatives: [netlify, cloudflare-pages]
     containerization: docker
     orchestration: docker-compose
     cloud: aws
+    edge: cloudflare
     monitoring: prometheus
 
 slashPrefix: Dashboard
@@ -75,3 +85,11 @@ workflow-templates:
   standard: dashboard-development-workflow.yaml
   complex: complex-dashboard-workflow.yaml
   realtime: realtime-dashboard-workflow.yaml
+  refine: refine-dashboard-workflow.yaml
+
+refine-integration:
+  setup-template: refine-project-setup-tmpl.yaml
+  supabase-template: supabase-integration-tmpl.yaml
+  shadcn-setup-hours: 2-4
+  recommended-stack: [react, refine, shadcn-ui, supabase, vercel]
+  optional-enhancements: [cloudflare, typescript, tailwindcss]

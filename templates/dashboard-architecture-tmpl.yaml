@@ -46,11 +46,17 @@ sections:
         instruction: |
           Specify the frontend technology stack and justifications:
           
+          **Recommended Modern Stack (2024):**
+          - Primary framework: React + TypeScript
+          - Dashboard framework: Refine.dev (headless, CRUD-focused)
+          - UI Components: shadcn/ui (Radix UI + Tailwind CSS)
+          - State management: Zustand (or Refine's built-in)
+          - Build tools: Vite (or Create React App)
+          
           **Framework Selection:**
-          - Primary framework (React, Vue, Angular, Streamlit, Dash)
-          - Component libraries (Material-UI, Ant Design, Chakra UI)
-          - State management (Redux, Zustand, Context API)
-          - Build tools (Webpack, Vite, Create React App)
+          - Alternative frameworks (Vue, Angular, Streamlit, Dash)
+          - Alternative component libraries (Material-UI, Ant Design, Chakra UI)
+          - Alternative state management (Redux, Context API)
           
           **Visualization Libraries:**
           - Chart libraries (Recharts, D3.js, Plotly, Chart.js)
@@ -58,9 +64,24 @@ sections:
           - Custom visualization tools
           
           **UI and Styling:**
-          - CSS frameworks (Tailwind, Bootstrap, Styled Components)
-          - Design system and theming approach
+          - CSS framework: Tailwind CSS (recommended with shadcn/ui)
+          - Design system: shadcn/ui components (copy-paste approach)
+          - Accessibility: Built-in via Radix UI primitives
           - Responsive design strategy
+          
+          **Refine.dev Benefits:**
+          - Pre-built dashboard patterns (tables, filters, forms)
+          - Built-in authentication and routing
+          - CRUD operations with minimal code
+          - Data provider integrations (Supabase, REST, GraphQL)
+          - Reduces development time from months to weeks
+          
+          **shadcn/ui Benefits:**
+          - Modern 2024 aesthetics vs older component libraries
+          - Full ownership of components (copy-paste approach)
+          - Accessibility built-in via Radix UI
+          - Minimal bundle size (only copy what you need)
+          - TypeScript support throughout
           
           **Justification:**
           Explain why these technologies were selected based on:
@@ -68,6 +89,7 @@ sections:
           - Team expertise and preferences
           - Performance and scalability needs
           - Community support and ecosystem
+          - Time to market considerations
         elicit: true
 
       - id: backend-technologies
@@ -75,23 +97,41 @@ sections:
         instruction: |
           Specify the backend technology stack and data layer:
           
-          **API Framework:**
-          - Primary framework (Express.js, FastAPI, Flask, Django)
+          **Recommended Modern Stack (2024):**
+          - Primary backend: Supabase (PostgreSQL + instant APIs)
+          - Authentication: Supabase Auth (built-in)
+          - Real-time: Supabase Realtime subscriptions
+          - File storage: Supabase Storage
+          - API approach: Instant REST APIs from database schema
+          
+          **Supabase Benefits:**
+          - Eliminates entire backend development phase
+          - PostgreSQL with instant REST/GraphQL APIs
+          - Built-in authentication and authorization
+          - Real-time subscriptions for live dashboard updates
+          - Visual database management interface
+          - Generous free tier, scales to enterprise
+          - Self-hosting option available
+          
+          **Alternative API Frameworks:**
+          - Express.js, FastAPI, Flask, Django (if custom backend needed)
           - API design approach (REST, GraphQL, hybrid)
           - Authentication and authorization libraries
           - Middleware and plugins
           
           **Database and Storage:**
-          - Primary database (PostgreSQL, MongoDB, InfluxDB)
-          - Caching layer (Redis, Memcached)
-          - File storage (AWS S3, local storage)
-          - Search engines (Elasticsearch, Solr)
+          - Primary database: PostgreSQL (via Supabase)
+          - Alternative databases (MongoDB, InfluxDB)
+          - Caching layer (Redis, Memcached) - if needed beyond Supabase
+          - File storage: Supabase Storage (or AWS S3, local storage)
+          - Search engines (Elasticsearch, Solr) - if advanced search needed
           
           **Data Processing:**
-          - ETL tools and pipelines
-          - Message queues (RabbitMQ, Apache Kafka)
-          - Scheduled jobs and cron tasks
-          - Data validation and transformation libraries
+          - Real-time processing: Supabase Edge Functions
+          - ETL tools and pipelines (if complex data transformations needed)
+          - Message queues (RabbitMQ, Apache Kafka) - for high-volume scenarios
+          - Scheduled jobs: Supabase Edge Functions with cron
+          - Data validation: PostgreSQL constraints + application layer
           
           **Justification:**
           Explain backend technology selections based on:
@@ -99,6 +139,8 @@ sections:
           - Real-time processing needs
           - Integration requirements
           - Scalability and performance needs
+          - Development speed and team expertise
+          - Cost considerations (Supabase free tier)
         elicit: true
 
       - id: infrastructure-deployment
@@ -106,29 +148,51 @@ sections:
         instruction: |
           Define infrastructure, deployment, and operational technologies:
           
-          **Containerization and Orchestration:**
-          - Docker for containerization
-          - Kubernetes or Docker Compose for orchestration
+          **Recommended Modern Stack (2024):**
+          - Frontend deployment: Vercel (React/Next.js optimized)
+          - Backend: Supabase (fully managed PostgreSQL + APIs)
+          - Edge network: Cloudflare (optional, for global performance)
+          - Version control: Git + GitHub
+          - CI/CD: GitHub Actions (built-in with Vercel)
+          
+          **Deployment Benefits:**
+          - **Vercel**: Zero-config React deployment, automatic HTTPS, global CDN
+          - **Supabase**: Fully managed backend, no server management
+          - **Cloudflare**: Sub-50ms global response times, DDoS protection
+          - **Time to deployment**: Minutes vs weeks with traditional infrastructure
+          
+          **Alternative Deployment Platforms:**
+          - Frontend: Netlify, Cloudflare Pages, traditional hosting
+          - Containerization: Docker (if needed for complex deployments)
+          - Orchestration: Kubernetes, Docker Compose (for enterprise)
           - Container registry and image management
           
           **Cloud Platform and Services:**
-          - Cloud provider (AWS, Azure, GCP, or on-premise)
-          - Compute services (EC2, App Service, Compute Engine)
-          - Database services (RDS, CosmosDB, Cloud SQL)
-          - Storage services (S3, Blob Storage, Cloud Storage)
+          - Cloud provider alternatives: AWS, Azure, GCP, or on-premise
+          - Compute services: EC2, App Service, Compute Engine (if not using Vercel)
+          - Database services: Supabase (managed) or RDS, CosmosDB, Cloud SQL
+          - Storage services: Supabase Storage or S3, Blob Storage, Cloud Storage
           
           **CI/CD and DevOps:**
-          - Version control (Git, GitHub, GitLab)
-          - CI/CD pipelines (GitHub Actions, Jenkins, Azure DevOps)
-          - Infrastructure as Code (Terraform, CloudFormation)
-          - Monitoring and logging (Prometheus, DataDog, ELK Stack)
+          - Version control: Git, GitHub, GitLab
+          - CI/CD pipelines: GitHub Actions (recommended), Jenkins, Azure DevOps
+          - Infrastructure as Code: Not typically needed with Supabase + Vercel
+          - Monitoring and logging: Built-in Supabase metrics, Vercel analytics
+          - Advanced monitoring: Prometheus, DataDog, ELK Stack (if needed)
+          
+          **Development Workflow:**
+          - Local development: Supabase CLI + local Supabase instance
+          - Preview deployments: Automatic with Vercel on every PR
+          - Production deployment: Git-based, automatic on main branch
+          - Database migrations: Supabase migration system
           
           **Justification:**
           Explain infrastructure choices based on:
           - Scalability and availability requirements
           - Security and compliance needs
-          - Cost considerations
+          - Cost considerations (free tiers vs enterprise needs)
           - Team expertise and operational capabilities
+          - Development velocity and time to market
         elicit: true
 
   - id: system-architecture
